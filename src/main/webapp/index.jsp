@@ -38,7 +38,7 @@
       <br>
       <span class="badge badge-success">Your Major (and Minor if possible): Bachelor of Information Technology</span>
       <br>
-      <span class="badge badge-danger">Your Hobb: Golfingy</span>
+      <span class="badge badge-danger">Your Hobb: Golfing</span>
       <br>
       <span class="badge badge-warning">Your Favouritate Programming Language: Linux</span>
       <!-- You only need to change these information, ends here! -->
