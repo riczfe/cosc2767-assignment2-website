@@ -14,7 +14,7 @@ RUN apt-get update && apt-get install -y wget unzip
 RUN wget https://github.com/jenkinsci/plugin-installation-manager-tool/releases/latest/download/jenkins-plugin-manager-2.11.0.jar -O /usr/share/jenkins/ref/jenkins-plugin-manager.jar
 
 # Copy plugins list
-COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
+COPY cosc2767-assignment2-website/plugins.txt /usr/share/jenkins/ref/plugins.txt
 
 # Install plugins using the plugin manager
 RUN java -jar /usr/share/jenkins/ref/jenkins-plugin-manager.jar --plugin-file /usr/share/jenkins/ref/plugins.txt
