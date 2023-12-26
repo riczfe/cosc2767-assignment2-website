@@ -4,11 +4,23 @@ FROM jenkins/jenkins:lts
 # Skip the initial setup wizard
 ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
 
+# User root to install packages
+USER root
+
+# Install wget and unzip
+RUN apt-get update && apt-get install -y wget unzip
+
+# Download the Jenkins plugin manager
+RUN wget https://github.com/jenkinsci/plugin-installation-manager-tool/releases/latest/download/jenkins-plugin-manager-2.11.0.jar -O /usr/share/jenkins/ref/jenkins-plugin-manager.jar
+
 # Copy plugins list
 COPY plugins.txt /usr/share/jenkins/ref/plugins.txt
 
-# Install listed plugins
-RUN /usr/local/bin/install-plugins.sh < /usr/share/jenkins/ref/plugins.txt
+# Install plugins using the plugin manager
+RUN java -jar /usr/share/jenkins/ref/jenkins-plugin-manager.jar --plugin-file /usr/share/jenkins/ref/plugins.txt
+
+# Drop back to the regular jenkins user
+USER jenkins
 
 # Expose the default Jenkins port
 EXPOSE 8080
