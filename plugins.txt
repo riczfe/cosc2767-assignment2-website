@@ -1,0 +1,3 @@
+github
+deploy-to-container
+maven-plugin
