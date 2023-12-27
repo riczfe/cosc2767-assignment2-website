@@ -7,6 +7,9 @@ service docker start
 # Copy the Dockerfile for Jenkins (adjust the path as needed)
 cp ./cosc2767-assignment2-website/Dockerfile_jenkins Dockerfile
 
+#Install Java
+amazon-linux-extras install -y java-openjdk11
+
 # Install Maven
 cd /opt
 wget https://dlcdn.apache.org/maven/maven-3/3.9.5/binaries/apache-maven-3.9.5-bin.tar.gz
