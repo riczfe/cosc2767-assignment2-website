@@ -34,13 +34,13 @@
       <p>Here is the information you need to change:</p>
       <span class="badge badge-primary">Name: Kha Tran</span>
       <br>
-      <span class="badge badge-secondary">sID: 3726128</span>
+      <span class="badge badge-secondary">sID: 3750945</span>
       <br>
-      <span class="badge badge-success">Major: IT</span>
+      <span class="badge badge-success">Major: Information Technology</span>
       <br>
-      <span class="badge badge-danger">Video Games</span>
+      <span class="badge badge-danger">Golfing</span>
       <br>
-      <span class="badge badge-warning">Favouritate Programming Language: Java</span>
+      <span class="badge badge-warning">Favouritate Programming Language: linux</span>
       <!-- You only need to change these information, ends here! -->
       
 

@@ -29,5 +29,8 @@ sudo yum upgrade
 yum install jenkins -y
 service jenkins start
 
+# Setup Maven Environment 
+cat ./cosc2767-assignment2-website/bash_profile.txt | sudo tee /root/.bash_profile
+
 # Display status
 echo "Installation complete. Jenkins, Docker, Maven, and Tomcat have been installed and started."
