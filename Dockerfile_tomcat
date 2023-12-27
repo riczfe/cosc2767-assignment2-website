@@ -1,4 +1,17 @@
-# //Get official tomcat images from Dockerhub: https://hub.docker.com/_/tomcat/tags
+# Use the official Tomcat image from Docker Hub
 FROM tomcat:latest
-# //Copy files from tomcat folder to webapps folder.
-RUN cp -R /usr/local/tomcat/webapps.dist/* /usr/local/tomcat/webapps
+
+# Copy the custom tomcat-users.xml to the container
+COPY tomcat-users.xml /usr/local/tomcat/conf/
+
+# Copy the custom entrypoint script to the container
+COPY entrypoint.sh /usr/local/bin/
+
+# Make the entrypoint script executable
+RUN chmod +x /usr/local/bin/entrypoint.sh
+
+# Set the entrypoint script as the entrypoint
+ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
+
+# Expose the default Tomcat port
+EXPOSE 8080

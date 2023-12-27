@@ -1,3 +1,6 @@
-github
-deploy-to-container
-maven-plugin
+useradd dockeradmin
+passwd dockeradmin
+usermod -aG docker dockeradmin
+sleep 2
+mv ./cosc2767-assignment2-website/sshd_config /etc/ssh/sshd_config
+service sshd reload
