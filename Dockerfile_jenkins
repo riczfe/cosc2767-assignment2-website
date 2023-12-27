@@ -1,32 +1,26 @@
-# Use the official Jenkins LTS image as a base
+# Start with the official Jenkins image
 FROM jenkins/jenkins:lts
 
-# Skip the initial setup wizard
-ENV JAVA_OPTS -Djenkins.install.runSetupWizard=false
-
-# User root to install packages
+# Switch to the root user to install additional tools
 USER root
 
-# Install wget and unzip
-RUN apt-get update && apt-get install -y wget unzip
+# Install Maven
+ARG MAVEN_VERSION=3.9.5
+RUN curl -fsSL https://dlcdn.apache.org/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz \
+    | tar xz -C /opt/ \
+    && ln -s /opt/apache-maven-${MAVEN_VERSION} /opt/maven
 
-# Download the Jenkins plugin manager
-RUN wget https://github.com/jenkinsci/plugin-installation-manager-tool/releases/latest/download/jenkins-plugin-manager-2.11.0.jar -O /usr/share/jenkins/ref/jenkins-plugin-manager.jar
+# Set environment variables for Maven
+ENV MAVEN_HOME /opt/maven
+ENV PATH $MAVEN_HOME/bin:$PATH
 
-# Copy plugins list
-COPY cosc2767-assignment2-website/plugins.txt /usr/share/jenkins/ref/plugins.txt
+# Additional installations or configurations can go here
 
-# Install plugins using the plugin manager
-RUN java -jar /usr/share/jenkins/ref/jenkins-plugin-manager.jar --plugin-file /usr/share/jenkins/ref/plugins.txt
-
-# Drop back to the regular jenkins user
+# Switch back to the Jenkins user
 USER jenkins
 
-# Expose the default Jenkins port
+# Inform Docker that the container is listening on port 8080
 EXPOSE 8080
 
-# Expose the port for attached slave agents
-EXPOSE 50000
-
-# Start Jenkins
-CMD ["jenkins.sh"]
+# Start the Jenkins server
+CMD ["/usr/local/bin/jenkins.sh"]
