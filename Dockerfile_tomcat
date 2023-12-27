@@ -2,7 +2,7 @@
 FROM tomcat:latest
 
 # Copy the custom tomcat-users.xml to the container
-COPY tomcat-users.xml /usr/local/tomcat/conf/
+COPY ./cosc2767-assignment2-website/tomcat-users.xml /usr/local/tomcat/conf/
 
 # Copy the custom entrypoint script to the container
 COPY ./cosc2767-assignment2-website/entrypoint.sh /usr/local/bin/
