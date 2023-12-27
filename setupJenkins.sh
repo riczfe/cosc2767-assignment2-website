@@ -27,7 +27,7 @@ sudo wget -O /etc/yum.repos.d/jenkins.repo \
 sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io.key
 sudo yum upgrade
 yum install jenkins -y
-service jenkins start
+service jenkins status
 
 # Setup Maven Environment 
 cat ./cosc2767-assignment2-website/bash_profile.txt | sudo tee /root/.bash_profile

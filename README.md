@@ -6,7 +6,7 @@ Author: Kha Nguyen Anh Tran <br/>
 ID: s3750945 <br/>
 Created  date: 23/12/2023 <br/>
 Last modified: 30/12/2023 <br/>
-Acknowledgement: Acknowledge the resources that I use here. 
+Acknowledgement: Acknowledge the resources that I use. 
 
 
 # COSC2767-Assignment2-Website
